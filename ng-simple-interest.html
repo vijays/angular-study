@@ -1,0 +1,72 @@
+<html>
+<!-- This program calculates simple interest based on amount, rate and number of years. -->
+<!-- Author: Vijay -->
+<!-- Versions: -->
+<!-- 2016-04-03 : Initial version -->
+<!-- 2016-04-28 : Implemented controller function call from JS, beautified code -->
+
+	<head>
+		<title>Web App for Simple Interest Calculation</title>
+
+        	<!-- Angular 1.5.5 CDN -->
+        	<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.min.js"></script>
+
+        	<!-- Internal stylesheet -->
+		<style>
+			h1
+			{ 
+				text-align: center;
+			}
+			div#frm
+			{
+				width:200px;
+				border: 1px solid red;
+				margin: auto;
+				padding: 20px 20px 20px 20px;
+				align-content: center;
+			}
+		</style>
+	</head>
+
+	<body>
+		<h1>Simple Interest Calculation</h1>
+
+		<!-- Defining Angular app and binding controls -->
+		<div ng-app="siApp" ng-controller="siCtrl" id = "frm">
+			Amount:<br>
+			<input type="number" ng-model="amount"><br><br>
+			Rate:<br>
+			<input type="number" ng-model="rate"><br><br>
+			No. of Years:<br>
+			<input type="number" ng-model="years"><br><br>
+			
+			<!-- Calling a JS function which will call a function in the controller -->
+			<button onclick="calculate()">Calculate</button><br><br>
+			Simple interest earned: {{simpleInterest}}<br>
+		</div>
+		
+		<script>
+			// Defining the app
+			var app = angular.module ('siApp', []);
+
+			// Defining the controller
+			app.controller('siCtrl', function($scope){
+				$scope.amount = 0;
+				$scope.rate = 0;
+				$scope.years = 0;
+				$scope.result = function () {
+				$scope.simpleInterest = ($scope.amount * $scope.rate * $scope.years)/100;
+				};
+			});
+
+			// Calling a controller function from outside
+			function calculate(){
+				var scope = angular.element(document.getElementById("frm")).scope();
+				scope.$apply(function () {
+				scope.result();
+				});
+			};
+
+		</script>
+	</body>
+</html>
