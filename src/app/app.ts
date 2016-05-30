@@ -28,7 +28,7 @@ export class AppComponent {
     }
     
     //Yahoo! API's where clause with "and u='c'" is not working, hence,
-    //This function creates Fahrenheit to Celcius
+    //This function converts Fahrenheit to Celcius
     
     _FtoC(temp) {
         return   ""+ Math.round(((temp - 32) * 5 / 9));
