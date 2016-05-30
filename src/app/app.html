@@ -1,0 +1,13 @@
+<form (ngSubmit) = "onSubmit()">
+
+	<h1>Weather App</h1>
+
+	<label>City: </label>
+	
+	<input type="text" id="city" [(ngModel)]="_city">
+
+	<button type="submit">Get Temperature</button><br><br>
+	
+	{{_location}} {{_temperature_in_c}} 
+	
+</form>
